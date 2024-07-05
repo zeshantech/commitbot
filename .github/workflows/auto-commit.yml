@@ -2,10 +2,10 @@ name: Auto Commit and Push
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '0 */2 * * *'
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
@@ -28,12 +28,12 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name 'zeshantech'
-          git config --global user.email 'zeshanshakil0@gmail.com'
+          git config --global user.name 'your-username'
+          git config --global user.email 'your-email@example.com'
           git add .
           git commit -m "Automated commit $(date +'%Y-%m-%d %H:%M:%S')"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
