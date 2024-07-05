@@ -1,0 +1,39 @@
+name: Auto Commit and Push
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Run script to make changes
+        run: |
+          # Your script to make changes goes here
+          # For example, to update a timestamp
+          date > timestamp.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'zeshantech'
+          git config --global user.email 'zeshanshakil0@gmail.com'
+          git add .
+          git commit -m "Automated commit $(date +'%Y-%m-%d %H:%M:%S')"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
