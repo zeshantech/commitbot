@@ -32,6 +32,9 @@ jobs:
           git config --global user.email 'zeshanshakil0@gmail.com'
           git add .
           git commit -m "Automated commit $(date +'%Y-%m-%d %H:%M:%S')"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
+      - name: Push Back
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          force: true
+          directory: '.'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
