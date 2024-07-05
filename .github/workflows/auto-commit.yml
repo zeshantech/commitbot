@@ -1,8 +1,11 @@
 name: Auto Commit
 
-on:   
+on:
   schedule:
-  - cron: "*/1 * * * *"
+    - cron: '*/1 * * * *'
+  push:
+    branches:
+      - dev
 
 permissions:                
     contents: write
