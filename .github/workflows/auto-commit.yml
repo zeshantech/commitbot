@@ -2,10 +2,10 @@ name: Auto Commit and Push
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '*/1 * * * *'
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name 'your-username'
-          git config --global user.email 'your-email@example.com'
+          git config --global user.name 'zeshantech'
+          git config --global user.email 'zeshanshakil0@gmail.com'
           git add .
           git commit -m "Automated commit $(date +'%Y-%m-%d %H:%M:%S')"
 
