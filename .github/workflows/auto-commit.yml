@@ -1,11 +1,12 @@
+
 name: Auto Commit
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/1 * * * *'
   push:
     branches:
-      - dev
+      - main
 
 permissions:                
     contents: write
@@ -88,7 +89,7 @@ jobs:
           
           git commit -m "${arr[$rand]}"
           
-      - name: GitHub Push
+      - name: GIthub Push
         uses: ad-m/github-push-action@master
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
