@@ -6,7 +6,7 @@ on:
     - cron: '*/1 * * * *'
   push:
     branches:
-      - main
+      - dev
 
 permissions:                
     contents: write
@@ -89,8 +89,8 @@ jobs:
           
           git commit -m "${arr[$rand]}"
           
-      - name: GIthub Push
-        uses: ad-m/github-push-action@master
+      - name: Github Push
+        uses: ad-m/github-push-action@dev
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
