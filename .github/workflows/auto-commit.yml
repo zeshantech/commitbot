@@ -90,7 +90,7 @@ jobs:
           git commit -m "${arr[$rand]}"
           
       - name: Github Push
-        uses: ad-m/github-push-action@dev
+        uses: ad-m/github-push-action@main
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
